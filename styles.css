@@ -1,3 +1,120 @@
-h1 {
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #646464;
+}
+
+html,
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background-color: #dfdfdf;
+    color: var(--primary-color);
+}
+
+.add {
+    height: 30px;
+}
+
+.addbook {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #ff9317;
+    border-radius: 50px;
+    color: #fff;
+    fill: #fff;
+    transition: all 100ms;
+}
+
+.addbook:hover,
+.addbook:active,
+.addbook:focus {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+.addbook span {
+    font-size: 20px;
+    padding-bottom: 2px;
+}
+
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: #f8f8f8;
+    padding: 100px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    gap: 20px;
+    font-size: 35px;
+    font-weight: 600;
+    color: #252525;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 5px #e6e6e6;
+    padding: 50px;
+    border-radius: 50px;
+}
+
+.book span:nth-child(3) {
+    font-size: 25px;
+    color: var(--primary-color);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.buttons button {
+    border: none;
+    font-size: 25px;
+    color: var(--primary-color);
+    padding: 10px 40px;
+    transition: all 100ms;
+}
+
+.buttons button:hover,
+.buttons button:active,
+.buttons button:focus {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+.buttons button:first-child {
+    background-color: #f0baba;
 }
