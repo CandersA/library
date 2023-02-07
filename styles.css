@@ -63,6 +63,7 @@ body {
 }
 
 main {
+    position: relative;
     flex: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -71,6 +72,14 @@ main {
     gap: 30px;
     background-color: #f8f8f8;
     padding: 100px;
+}
+
+#empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
 }
 
 .book {
@@ -93,16 +102,7 @@ main {
     color: var(--primary-color);
 }
 
-.buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 10px;
-}
-
-.buttons button {
+.book button {
     border: none;
     font-size: 25px;
     color: var(--primary-color);
@@ -111,13 +111,13 @@ main {
     transition: all 100ms;
 }
 
-.buttons button:hover,
-.buttons button:active {
+.book button:hover,
+.book button:active {
     cursor: pointer;
     filter: brightness(80%);
 }
 
-.buttons button:first-child {
+.book button:nth-last-child(2) {
     background-color: #f0baba;
 }
 
@@ -168,4 +168,8 @@ main {
 .closebtn:focus {
     cursor: pointer;
     fill: #ff9317;
+}
+
+.green {
+    background-color: #9be06c !important;
 }
