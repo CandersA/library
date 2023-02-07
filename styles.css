@@ -16,7 +16,7 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
-body {
+#darken {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -117,4 +117,53 @@ main {
 
 .buttons button:first-child {
     background-color: #f0baba;
+}
+
+#bookadd {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px;
+    background-color: #f5f5f5;
+    font-size: 25px;
+    color: var(--primary-color);
+    border-radius: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#bookadd input {
+    outline: none;
+    border: none;
+    font-family: inherit;
+    font-size: 20px;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+#bookadd > div > label {
+    font-size: 18px;
+}
+
+#bookadd div {
+    align-self: center;
+}
+
+.closebtn {
+    height: 25px;
+    fill: var(--primary-color);
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    transition: all 100ms;
+}
+
+.closebtn:hover,
+.closebtn:active,
+.closebtn:focus {
+    cursor: pointer;
+    fill: #ff9317;
 }
