@@ -39,10 +39,12 @@ body {
 .addbook {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 10px 15px;
     background-color: #ff9317;
     border-radius: 50px;
+    border: none;
     color: #fff;
     fill: #fff;
     transition: all 100ms;
@@ -105,12 +107,12 @@ main {
     font-size: 25px;
     color: var(--primary-color);
     padding: 10px 40px;
+    border-radius: 50px;
     transition: all 100ms;
 }
 
 .buttons button:hover,
-.buttons button:active,
-.buttons button:focus {
+.buttons button:active {
     cursor: pointer;
     filter: brightness(80%);
 }
