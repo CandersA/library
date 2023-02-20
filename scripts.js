@@ -1,14 +1,13 @@
 const displayBookForm = document.getElementById('displayform');
-const submitBookForm = document.getElementById('submitform');
 const bookForm = document.getElementById('bookadd');
 const darken = document.getElementById('darken');
 const closeBtn = document.querySelector('.closebtn');
 const bookSection = document.getElementById('main');
 const emptyPara = document.getElementById('empty');
-let i = 0;
+const i = 0;
 const myLibrary = [];
 
-function Book(name, author, numOfPages, read, bookNr) {
+function Book(name, author, numOfPages, bookNr, read = false) {
   this.name = name;
   this.author = author;
   this.numOfPages = numOfPages;
@@ -19,6 +18,7 @@ function Book(name, author, numOfPages, read, bookNr) {
 function openForm() {
   bookForm.style.display = 'flex';
   darken.style.filter = 'brightness(70%)';
+  validateForm();
 }
 
 function closeForm() {
@@ -26,12 +26,10 @@ function closeForm() {
   darken.style.filter = null;
 }
 
-function getData() {
-  const bookName = document.getElementById('bookname').value;
-  const bookAuthor = document.getElementById('bookauthor').value;
-  const pageNumber = document.getElementById('numofpages').value;
+function getData(name, author, pages) {
   const isRead = document.getElementById('bookread').checked;
-  myLibrary[i] = new Book(bookName, bookAuthor, pageNumber, isRead, i);
+
+  myLibrary[i] = new Book(name.value, author.value, pages.value, i, isRead);
   closeForm();
 }
 
@@ -77,12 +75,29 @@ function createBook() {
   }, { once: true });
 }
 
-function displayBook() {
-  getData();
-  createBook();
-  i += 1;
+function validateForm() {
+  const bookName = document.getElementById('bookname');
+  const bookAuthor = document.getElementById('bookauthor');
+  const pageNumber = document.getElementById('numofpages');
+  const errorSpan = document.querySelector('.error');
+
+  pageNumber.addEventListener('input', () => {
+    if (pageNumber.validity.rangeOverflow) {
+      errorSpan.textContent = 'Number of pages cannot be greater than 5000';
+    } else {
+      errorSpan.textContent = '';
+    }
+  });
+
+  bookForm.addEventListener('submit', () => {
+    if (!pageNumber.validity.valid || !bookAuthor.validity.valid || !bookName.validity.valid) {
+      errorSpan.textContent = 'All of the above fields are required!';
+    } else {
+      getData(bookName, bookAuthor, pageNumber);
+      createBook();
+    }
+  });
 }
 
 displayBookForm.addEventListener('click', openForm);
 closeBtn.addEventListener('click', closeForm);
-submitBookForm.addEventListener('click', displayBook);
